@@ -1,0 +1,22 @@
+n_threads,max_tokens,echo,use_mmap,numa,time_taken,tokens_per_second,response
+,16,True,True,False,2.2456517219543457,7.1248804271730615,Q: Name the planets in the solar system? A: 1. Mercury 2. Venus 3. Earth 4.
+,16,True,False,False,2.2281274795532227,7.18091767496547,"Q: Name the planets in the solar system? A: 
+Mercury, Venus, Earth, Mars, Jupiter, Saturn"
+4,16,True,True,True,2.0711140632629395,7.7253108767910055,Q: Name the planets in the solar system? A: 8. The name of the eighth planet in our solar system is Nept
+6,16,True,False,False,0.5976259708404541,26.772598214730962,Q: Name the planets in the solar system? A: 8
+8,16,True,False,False,2.0759925842285156,7.7071566254876345,Q: Name the planets in the solar system? A: 1. Mercury 2. Venus 3. Earth 4.
+6,16,True,True,False,2.1322760581970215,7.503718825942755,"Q: Name the planets in the solar system? A: 8
+A: Mercury, Venus, Earth, Mars, Jupiter"
+6,16,True,True,True,2.0311737060546875,7.877218946024114,"Q: Name the planets in the solar system? A: 8. Planets
+A: Mercury, Venus, Earth, Mars"
+8,16,True,False,True,2.090611219406128,7.653264199235026,"Q: Name the planets in the solar system? A: 8.
+A: Mercury, Venus, Earth, Mars, J"
+4,16,True,True,False,0.9015200138092041,17.74780343743562,Q: Name the planets in the solar system? A: 8. Planets
+,16,True,False,True,2.1823606491088867,7.33151049370928,"Q: Name the planets in the solar system? A: 
+Mercury, Venus, Earth, Mars, Jupiter, Saturn"
+4,16,True,False,True,2.579549551010132,6.202633321672198,"Q: Name the planets in the solar system? A: 8. Mercury, Venus, Earth, Mars, Jupiter, Sat"
+6,16,True,False,True,2.101125717163086,7.614965572646935,"Q: Name the planets in the solar system? A: 8. Mercury, Venus, Earth, Mars, Jupiter, Sat"
+4,16,True,False,False,2.5326850414276123,6.317406127601714,"Q: Name the planets in the solar system? A: 8 planets. (Mercury, Venus, Earth, Mars, Jupiter"
+,16,True,True,True,0.9180788993835449,17.42769604087774,Q: Name the planets in the solar system? A: 8
+8,16,True,True,False,0.7286522388458252,21.95834878013107,Q: Name the planets in the solar system? A: 8
+8,16,True,True,True,0.5901024341583252,27.113936621564893,Q: Name the planets in the solar system? A: 8

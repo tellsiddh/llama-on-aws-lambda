@@ -1,0 +1,3 @@
+awslambdaric==2.0.7
+llama-cpp-python
+boto3

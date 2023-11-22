@@ -1,0 +1,37 @@
+# Define function directory
+ARG FUNCTION_DIR="/function"
+
+# Build stage
+FROM --platform=linux/amd64 python:3.11 as build-image
+
+ARG FUNCTION_DIR
+RUN mkdir -p ${FUNCTION_DIR}
+WORKDIR ${FUNCTION_DIR}
+
+COPY model/ model/
+COPY requirements.txt .
+RUN apt-get update
+RUN apt-get -y install libopenblas-dev
+RUN CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" pip install --target ${FUNCTION_DIR} --no-cache-dir llama-cpp-python
+RUN pip install --target ${FUNCTION_DIR} --no-cache-dir -r requirements.txt
+
+COPY lambda_function.py .
+
+# Custom runtime stage
+FROM --platform=linux/amd64 python:3.11-slim as custom-docker-runtime
+
+ARG FUNCTION_DIR
+WORKDIR ${FUNCTION_DIR}
+
+# Install AWS Lambda RIE
+RUN apt-get update && apt-get install -y curl
+RUN curl -Lo /usr/local/bin/aws-lambda-rie https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie \
+    && chmod +x /usr/local/bin/aws-lambda-rie
+
+RUN apt-get -y install libopenblas-dev
+
+COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
+
+# Set the entrypoint to the AWS Lambda RIE
+ENTRYPOINT [ "/usr/local/bin/aws-lambda-rie" ]
+CMD [ "/usr/local/bin/python", "-m", "awslambdaric", "lambda_function.handler" ]
